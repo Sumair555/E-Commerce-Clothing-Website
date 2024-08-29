@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MASH STORE</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+/* CSS for styling the navigation bar */
+.navbar {
+  overflow: hidden;
+  background-color: rgba(214, 145, 25, 0.988);
+  width:100%;
+  height: 75px;;
+}
+* {
+  font-family: "Handlee", cursive;
+  font-weight: 1000;
+  font-style: normal;
+}
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 25px 20px;
+  text-decoration: none;
+}
+/* Hover style for Women, Men, and Shoes */
+.navbar a:not(:last-child):hover {
+  background-color: whitesmoke;
+  color: black;
+}
+.navbar a[href="#download_app"]:hover {
+  background-color: whitesmoke;
+  color: black;
+}
+/* Remove background color for hover effect */
+.navbar a[href="#track_order"]:hover,
+.navbar a[href="#contact_us"]:hover,
+.navbar a[href="#download_app"]:hover {
+  background-color: transparent;
+}
+/* Hover effect for Topware and Themes */
+.dropdown:hover > div {
+  background-color: whitesmoke;
+  color: black;
+}
+/* Adjust margin to leave space between Shoes and Track Order */
+.navbar a:nth-child(3) {
+  margin-right: 600px;
+}
+/* Additional styling for the header */
+header {
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+  position: fixed; /* Fixed position to keep it at the top */
+  width: 100%; /* Set the width to 100% */
+  z-index: 1000; /* Ensure it appears above other content */
+}
+.header-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.flex {
+  text-align: left;
+  display: inline-block;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-right: 20px; /* Added space between dropdowns */
+}
+/* Hover effect for Topware and Themes */
+.dropdown:hover {
+  background-color: white;
+  color: rgba(214, 145, 25, 0.988);
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+  background-color: whitesmoke;
+  color:rgba(214, 145, 25, 0.988);
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown a:hover {
+  display: block;
+  background-color:whitesmoke;
+  color: rgba(214, 145, 25, 0.988); 
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.dropdown-content a:hover {
+  background-color:whitesmoke;
+  color: rgba(214, 145, 25, 0.988); 
+}
+/* CSS to remove underline from links */
+a {
+  text-decoration: none;
+  color: black;
+}
+/* CSS for hover effect on icons */
+.fas:hover {
+  color:rgba(214, 145, 25, 0.988);
+}
+.dropdown-topwear {
+  margin-right: 80px;
+}
+.dropdown-themes {
+  margin-right: 150px;
+}
+.membership {
+  margin-right: 550px;
+}
+/* CSS for adding space after MEMBERSHIP */
+.navbar .membership {
+  margin-right: 20px;
+}
+.membership:hover {
+  background-color: white;
+  color: rgba(214, 145, 25, 0.988);
+}
+.fas {
+  margin-left: 10px;
+}
+/* Additional CSS for sticky header */
+.header {
+  padding: 10px;
+  background: white;
+  color: black;
+}
+
+/* Additional CSS for sticky header */
+.sticky-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it appears above other content */
+}
+
+
+/* CSS for search box */
+.search-container {
+  position: relative;
+  display: inline-block;
+}
+
+#search-box {
+  position: absolute;
+  top: calc(50% - 10px); /* Position the text box vertically centered */
+  left: -160px; /* Adjust position to the left of the search icon */
+  width: 150px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  z-index: 1; /* Ensure the text box appears above other content */
+}
+
+#search-box input[type="text"] {
+  width: 100%; /* Make the input box width 100% */
+  border: none; /* Remove default border */
+  outline: none; /* Remove outline */
+}
+
+/* Hide search box by default */
+#search-box {
+  display: none;
+}
+
+/* Display search box on hover */
+.search-container:hover #search-box {
+  display: block;
+}
+
+/* Display search box when input is focused */
+#search-box:focus-within {
+  display: block;
+}
+footer {
+  background-color: rgb(216, 216, 240);
+  text-align: center;
+}
+.footer-links-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-link {
+  flex:1;
+  margin-right: 10px; /* Adjust as needed */
+}
+.footer-link a {
+  color: rgba(214, 145, 25, 0.988);
+  text-decoration: none;
+  display: inline-block;
+}
+.footer-list {
+  list-style-type: none;
+  padding-left: 20px;
+  margin-top: 0;
+}
+.footer-link h3 {
+  margin: 0;
+}
+.footer-list li {
+  margin-bottom: 5px;
+}
+.footer-list li:last-child {
+  margin-right: 0;
+}
+.footer-list li:hover {
+  color: rgba(214, 145, 25, 0.988);
+}
+.footer-additional-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+.footer-additional-links img, 
+.footer-additional-links span {
+  margin-right: 10px; /* Adjust margin as needed */
+  color: rgba(214, 145, 25, 0.988);
+  text-decoration: none;
+}
+.content{
+    background-color: white;
+}
+.new-arrivals img {
+  height: 350px; /* Set a fixed height */
+  width: 100%; /* Let the width adjust to maintain aspect ratio */
+  margin-bottom: 20px; /* Add margin between images */
+}
+.image-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px; /* Adjust margin as needed */
+}
+
+.image-column {
+  flex-basis: calc(25% - 10px); /* 25% width with 10px margin */
+}
+
+.image-column img {
+  width: 100%;
+  height: auto;
+}
+.image-info {
+    padding: 10px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.image-info h3 {
+    margin-top: 0;
+}
+
+.image-info p {
+    margin-bottom: 0;
+}
+
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+
+<!-- Navigation bar -->
+<div class="navbar">
+  <a href="./Women.html">WOMEN</a> 
+  <a href="./Men.html">MEN</a>
+  <a href="./Shoes.html">SHOES</a>
+  <a href="#track_order">TRACK ORDER</a>
+  <a href="#contact_us">CONTACT US</a>
+  <a href="#download_app"><i class="fas fa-mobile-alt"></i> DOWNLOAD APP</a>
+</div>
+
+<!-- Header -->
+<header class="header" id="myHeader">
+  <img class="header-image" src="../Logo/Untitled.jpg" alt="Your Image" height="50" width="100">
+  <div class="flex">
+    <div class="dropdown dropdown-topwear">
+      <div><a href="#TOPWEAR">TOPWEAR</a></div>
+      <div class="dropdown-content">
+        <a href="./Men Shirts.html">Shirts</a>
+        <a href="#">Hoodies</a>
+      </div>
+    </div>
+    <div class="dropdown dropdown-themes">
+        <div><a href="#THEMES">THEMES</a></div>
+        <div class="dropdown-content">
+          <a href="./Friends.html">Friends</a>
+          <a href="./Garfield.html">Garfield</a>
+          <a href="./HarryPotter.html">Harry Potter</a>
+          <a href="./Marvel.html">Marvel</a>
+          <a href="./MicketMouse.html">Mickey Mouse</a>
+          <a href="./MoneyHeist.html">Money Heist</a>
+          <a href="./Naruto.html">Naruto</a>
+          <a href="./TomAndJerry.html">Tom And Jerry</a>
+          <a href="./Wednesday.html">Wednesday</a>
+          <a href="./WinnieThePooh.html">Winnie The Pooh</a>
+        </div>
+      </div>
+    <a href="#" class="membership">MEMBERSHIP</a>
+    <div class="search-container">
+    <i class="fas fa-search" ></i>
+    <input type="text" placeholder="Search..." id="search-box">
+    </div>
+    <a href="./Login Page.php">
+    <i class="fas fa-user-alt"></i>
+</a>
+    <i class="fas fa-heart"></i>
+    <i class="fas fa-shopping-bag"></i>
+  </div>
+</header>
+<div class="content">
+    <div class="image-grid">
+        <div class="image-row">
+            <div class="image-column">
+                <img src="../Winnie The Pooh/Women/1.webp" alt="Image 1">
+                <div class="image-info">
+                    <h3>Winnie The Pooh Shirt</h3>
+                    <p>Rs.1999</p>
+                </div>
+            </div>
+            <div class="image-column">
+                <img src="../Winnie The Pooh/Women/2.webp" alt="Image 2">
+                <div class="image-info">
+                    <h3> Winnie The Pooh Shirt </h3>
+                    <p>Rs.1299</p>
+                </div>
+            </div>
+            <div class="image-column">
+                <img src="../Winnie The Pooh/Women/3.webp" alt="Image 3">
+                <div class="image-info">
+                    <h3>  Winnie The Pooh Shirt</h3>
+                    <p>Rs.1249</p>
+                </div>
+            </div>
+            <div class="image-column">
+                <img src="../Winnie The Pooh/Women/4.webp" alt="Image 4">
+                <div class="image-info">
+                    <h3>   Winnie The Pooh Shirt</h3>
+                    <p>Rs.1259</p>
+                </div>
+            </div>
+        </div>
+        <div class="image-row">
+            <div class="image-column">
+                <img src="../Winnie The Pooh/Women/5.webp" alt="Image 5">
+                <div class="image-info">
+                    <h3> Winnie The Pooh Shirt</h3>
+                    <p>Rs.1349</p>
+                </div>
+            </div>
+            
+            <div class="image-column">
+                <img src="../Winnie The Pooh/Women/1.1.webp" alt="Image 6">
+                <div class="image-info">
+                    <h3> Winnie The Pooh Hoddie</h3>
+                    <p>Rs.1329</p>
+                </div>
+            </div>
+            <div class="image-column">
+                <img src="../Winnie The Pooh/Women/2.1.webp" alt="Image 11">
+                <div class="image-info">
+                  <h3>Winnie The Pooh Hoddie</h3>
+                  <p>Rs.1500</p>
+              </div>
+            </div>
+            <div class="image-column">
+                <img src="../Winnie The Pooh/Men/1.webp" alt="Image 7">
+                <div class="image-info">
+                  <h3> Winnie The Pooh Shirt</h3>
+                  <p>Rs.1399</p>
+              </div>
+            </div>
+            
+        </div>
+    </div>
+</div> 
+<footer>
+    <div class="footer-links-container">
+      <div class="footer-link">
+        <a href="#">Need Help</a>
+        <ul class="footer-list">
+          <li>Track Order</li>
+          <li>Contact Us</li>
+          <li>My Account</li>
+    
+        </ul>
+      </div>
+      
+      <div class="footer-link">
+        <a href="#">Company</a>
+        <ul class="footer-list">
+          <li>About Us</li>
+          <li>Careers</li>
+        </ul>
+      </div>
+    
+      <div class="footer-link">
+        <a href="#">More Info</a>
+        <ul class="footer-list">
+          <li>Privacy Policy</li>
+          <li>Terms and Conditions</li>
+        </ul>
+      </div>
+    
+      <div class="footer-link">
+        <a href="#">Store Near Me</a>
+        <ul class="footer-list">
+          <li>Vijayawada</li>
+          <li>Hyderabad</li>
+          <li>Guntur</li>
+        </ul>
+      </div>
+      </div>
+      <div class="footer-additional-links">
+        <img src="https://e7.pngegg.com/pngimages/894/802/png-clipart-computer-icons-symbol-arrow-return-miscellaneous-photography-thumbnail.png"height="1%" width="1%">
+        <a href="#">Easy Return</a><br>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Indian_Rupee_symbol_in_circle_PD_version.svg/1024px-Indian_Rupee_symbol_in_circle_PD_version.svg.png" height="1%" width="1%">
+        <a href="#">COD Available</a>
+      </div>
+      <div><i class="fas fa-mobile-alt"> <a href="#experience the mash store app"></i>EXPERIENCE THE MASH STORE APP</a><br>
+        <img src="../Footer/app-store.avif" height="10%" width="10%"> 
+        <img src="../Footer/play-store.avif" height="10%" width="10%">
+      </div>
+      <div>
+        <a href="#follow us">Follow Us:</a>
+        <img src="https://i.pinimg.com/originals/70/da/29/70da29e0cd3e98f2ba4bb67bd0bde726.png" height="1.5%" width="1.5%">
+        <img src="https://png.pngtree.com/png-clipart/20230401/original/pngtree-three-dimensional-instagram-icon-png-image_9015419.png" height="1.5%" width="1.5%">
+        <img src="https://logos-world.net/wp-content/uploads/2020/04/Twitter-Symbol.png" height="2.5%" width="2.5%">
+      </div>
+      <div>
+        <a href="#100%securepayment">100% Secure Payment:</a>
+        <img src="https://seeklogo.com/images/P/phonepe-logo-B9E7D6F75F-seeklogo.com.png" height="1.5%" width="1.5%">
+        <img src="https://cdn.worldvectorlogo.com/logos/google-pay-1.svg" height="1.5%" width="1.5%">
+        <img src="https://cdn.icon-icons.com/icons2/730/PNG/512/paytm_icon-icons.com_62778.png  " height="1.5%" width="1.5%">
+        <img src="https://static-00.iconduck.com/assets.00/mastercard-icon-2048x1225-3kb6axel.png" height="2%" width="2%">
+        <img src="https://cdn-icons-png.flaticon.com/512/217/217425.png" height="1.5%" width="1.5%">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968601.png" height="1.5%" width="1.5%">   |
+        <a href="#shipping partners">Shipping Partners:</a>
+        <img src="https://tss-static-images.gumlet.io/icons/dtdc.png" height="3%" width="3%">
+        <img src="https://tss-static-images.gumlet.io/icons/delivery.png" height="3%" width="3%">
+        <img src="https://prod-img.thesouledstore.com/public/theSoul/images/icons/ECOM-Express.png?format=webp&w=70&dpr=2.0" height="3%" width="3%">
+        <img src="https://prod-img.thesouledstore.com/public/theSoul/images/icons/XPRESSBEES.png?format=webp&w=70&dpr=2.0" height="3%" width="3%">
+      </div>
+      <hr>
+      <div>
+        <a href="#mash store"><i class="fa fa-copyright"></i>MASH STORE 2024</a>
+      </div>
+    </footer>
+  
+<script>
+window.onscroll = function() {myFunction()};
+
+var header = document.getElementById("myHeader");
+var sticky = header.offsetTop;
+
+function myFunction() {
+if (window.pageYOffset > sticky) {
+  header.classList.add("sticky-header");
+} else {
+  header.classList.remove("sticky-header");
+}
+}
+
+</script>
+</body>
+</html>

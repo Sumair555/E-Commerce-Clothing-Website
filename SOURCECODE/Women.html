@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MASH STORE</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* CSS for styling the navigation bar */
+    .navbar {
+      overflow: hidden;
+      background-color: rgba(214, 145, 25, 0.988);
+      width: 100%;
+      height: 75px;
+      ;
+    }
+
+    * {
+      font-family: "Handlee", cursive;
+      font-weight: 1000;
+      font-style: normal;
+    }
+
+    .navbar a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 25px 20px;
+      text-decoration: none;
+    }
+
+    /* Hover style for Women, Men, and Shoes */
+    .navbar a:not(:last-child):hover {
+      background-color: whitesmoke;
+      color: black;
+    }
+
+    .navbar a[href="#download_app"]:hover {
+      background-color: whitesmoke;
+      color: black;
+    }
+
+    /* Remove background color for hover effect */
+    .navbar a[href="#track_order"]:hover,
+    .navbar a[href="#contact_us"]:hover,
+    .navbar a[href="#download_app"]:hover {
+      background-color: transparent;
+    }
+
+    /* Hover effect for Topware and Themes */
+    .dropdown:hover>div {
+      background-color: whitesmoke;
+      color: black;
+    }
+
+    /* Adjust margin to leave space between Shoes and Track Order */
+    .navbar a:nth-child(3) {
+      margin-right: 600px;
+    }
+
+    /* Additional styling for the header */
+    header {
+      background-color: white;
+      padding: 10px;
+      text-align: center;
+      position: fixed;
+      /* Fixed position to keep it at the top */
+      width: 100%;
+      /* Set the width to 100% */
+      z-index: 1000;
+      /* Ensure it appears above other content */
+    }
+
+    .header-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .flex {
+      text-align: left;
+      display: inline-block;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      margin-right: 20px;
+      /* Added space between dropdowns */
+    }
+
+    /* Hover effect for Topware and Themes */
+    .dropdown:hover {
+      background-color: white;
+      color: rgba(214, 145, 25, 0.988);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+      background-color: whitesmoke;
+      color: rgba(214, 145, 25, 0.988);
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown a:hover {
+      display: block;
+      background-color: whitesmoke;
+      color: rgba(214, 145, 25, 0.988);
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background-color: whitesmoke;
+      color: rgba(214, 145, 25, 0.988);
+    }
+
+    /* CSS to remove underline from links */
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    /* CSS for hover effect on icons */
+    .fas:hover {
+      color: rgba(214, 145, 25, 0.988);
+    }
+
+    .dropdown-topwear {
+      margin-right: 80px;
+    }
+
+    .dropdown-themes {
+      margin-right: 150px;
+    }
+
+    .membership {
+      margin-right: 550px;
+    }
+
+    /* CSS for adding space after MEMBERSHIP */
+    .navbar .membership {
+      margin-right: 20px;
+    }
+
+    .membership:hover {
+      background-color: white;
+      color: rgba(214, 145, 25, 0.988);
+    }
+
+    .fas {
+      margin-left: 10px;
+    }
+
+    /* New Arrivals section styling */
+    .new-arrivals {
+      text-align: center;
+      padding: 20px;
+      background-color: white;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      /* Allows items to wrap to the next line */
+    }
+
+    .new-arrivals img {
+      height: 350px;
+      /* Set a fixed height */
+      width: 100%;
+      /* Let the width adjust to maintain aspect ratio */
+      margin-bottom: 20px;
+      /* Add margin between images */
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: bold;
+      padding: 20px;
+      background-color: white;
+    }
+
+    .categories {
+      text-align: center;
+      padding: 20px;
+      background-color: white;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      /* Allows items to wrap to the next line */
+    }
+
+    .categories img {
+      width: 30%;
+      /* Adjust width as needed */
+      margin-bottom: 20px;
+      /* Add margin between images */
+      transition: transform 0.3s;
+      overflow: hidden;
+    }
+
+    .categories img:hover {
+      transform: scale(0.9);
+      /* Zoom in effect */
+    }
+
+    /* Official Merchandise section styling */
+    .logos {
+      position: relative;
+      text-align: center;
+      padding: 20px;
+      background-color: white;
+      overflow: hidden;
+      /* Hide overflow */
+    }
+
+    .logos-container {
+      display: flex;
+      justify-content: flex-start;
+      transition: transform 0.5s ease;
+      /* Add transition for smooth movement */
+      position: relative;
+      /* Add position relative */
+      left: 50px;
+    }
+
+    .logos img {
+      width: 400px;
+      /* Set width */
+      height: 200px;
+      /* Set height */
+      margin-right: 20px;
+      /* Add margin between images */
+    }
+
+    .brand {
+      text-align: center;
+      background-color: rgba(214, 145, 25, 0.988);
+      height: 30px;
+      color: white;
+      padding: 20px 20px;
+    }
+
+    footer {
+      background-color: rgb(216, 216, 240);
+      text-align: center;
+    }
+
+    .footer-links-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .footer-link {
+      flex: 1;
+      margin-right: 10px;
+      /* Adjust as needed */
+    }
+
+    .footer-link a {
+      color: rgba(214, 145, 25, 0.988);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .footer-list {
+      list-style-type: none;
+      padding-left: 20px;
+      margin-top: 0;
+    }
+
+    .footer-link h3 {
+      margin: 0;
+    }
+
+    .footer-list li {
+      margin-bottom: 5px;
+    }
+
+    .footer-list li:last-child {
+      margin-right: 0;
+    }
+
+    .footer-list li:hover {
+      color: rgba(214, 145, 25, 0.988);
+    }
+
+    .footer-additional-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 10px;
+      /* Adjust margin as needed */
+    }
+
+    .footer-additional-links img,
+    .footer-additional-links span {
+      margin-right: 10px;
+      /* Adjust margin as needed */
+      color: rgba(214, 145, 25, 0.988);
+      text-decoration: none;
+    }
+
+    /* Additional CSS for sticky header */
+    .sticky-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      /* Ensure it appears above other content */
+    }
+
+    .header {
+      padding: 10px;
+      background: white;
+      color: black;
+    }
+
+    .content {
+      padding-top: 50px;
+      /* Adjust according to the height of your header */
+    }
+
+    .arrow {
+      position: absolute;
+      top: 40%;
+      transform: translateY(-50%);
+      color: black;
+      font-size: 2em;
+      /* Adjust size as needed */
+      cursor: pointer;
+    }
+
+    .arrow:hover {
+      color: rgba(214, 145, 25, 0.988);
+    }
+
+    .arrow.fa-chevron-left {
+      left: 10px;
+      /* Adjust left position */
+    }
+
+    .arrow.fa-chevron-right {
+      right: 10px;
+      /* Adjust right position */
+    }
+
+    /* CSS for navigation dots */
+    .navigation-dots {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .dot {
+      height: 10px;
+      width: 10px;
+      margin: 0 5px;
+      background-color: rgba(0, 0, 0, 0.5);
+      /* Default color */
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+
+    .active {
+      background-color: rgba(214, 145, 25, 0.988);
+      /* Active color */
+    }
+
+    .arrow-merchandise {
+      position: absolute;
+      top: 50%;
+      color: black;
+      font-size: 2em;
+      /* Adjust size as needed */
+      cursor: pointer;
+      z-index: 1;
+      /* Ensure buttons are above images */
+    }
+
+    .arrow-merchandise.fa-chevron-left {
+      left: 10px;
+      /* Adjust left position */
+    }
+
+    .arrow-merchandise.fa-chevron-right {
+      right: 10px;
+      /* Adjust right position */
+    }
+
+    /* CSS for search box */
+    .search-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    #search-box {
+      position: absolute;
+      top: calc(50% - 10px);
+      /* Position the text box vertically centered */
+      left: -160px;
+      /* Adjust position to the left of the search icon */
+      width: 150px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      z-index: 1;
+      /* Ensure the text box appears above other content */
+    }
+
+    #search-box input[type="text"] {
+      width: 100%;
+      /* Make the input box width 100% */
+      border: none;
+      /* Remove default border */
+      outline: none;
+      /* Remove outline */
+    }
+
+    /* Hide search box by default */
+    #search-box {
+      display: none;
+    }
+
+    /* Display search box on hover */
+    .search-container:hover #search-box {
+      display: block;
+    }
+
+    /* Display search box when input is focused */
+    #search-box:focus-within {
+      display: block;
+    }
+
+    /* Update existing CSS styles with provided media queries */
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Navigation bar -->
+  <div class="navbar">
+    <a href="./Women.html">WOMEN</a>
+    <a href="./Men.html">MEN</a>
+    <a href="./Shoes.html">SHOES</a>
+    <a href="https://www.shiprocket.in/shipment-tracking/">TRACK ORDER</a>
+    <a href="#contact_us">CONTACT US</a>
+    <a href="https://www.apple.com/in/app-store/"><i class="fas fa-mobile-alt"></i> DOWNLOAD APP</a>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="myHeader">
+    <img class="header-image" src="../Logo/Untitled.jpg" alt="Your Image" height="50" width="100">
+    <div class="flex">
+      <div class="dropdown dropdown-topwear">
+        <div><a href="#TOPWEAR">TOPWEAR</a></div>
+        <div class="dropdown-content">
+          <a href="./Women Shirts.html">Shirts</a>
+          <a href="./Women Hoodies.html">Hoodies</a>
+        </div>
+      </div>
+      <div class="dropdown dropdown-themes">
+        <div><a href="#THEMES">THEMES</a></div>
+        <div class="dropdown-content">
+          <a href="./Friends.html">Friends</a>
+          <a href="./Garfield.html">Garfield</a>
+          <a href="./HarryPotter.html">Harry Potter</a>
+          <a href="./Marvel.html">Marvel</a>
+          <a href="./MicketMouse.html">Mickey Mouse</a>
+          <a href="./MoneyHeist.html">Money Heist</a>
+          <a href="./Naruto.html">Naruto</a>
+          <a href="./TomAndJerry.html">Tom And Jerry</a>
+          <a href="./Wednesday.html">Wednesday</a>
+          <a href="./WinnieThePooh.html">Winnie The Pooh</a>
+        </div>
+      </div>
+      <a href="#" class="membership">MEMBERSHIP</a>
+      <div class="search-container">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search..." id="search-box">
+      </div>
+      <a href="./Login Page.php">
+        <i class="fas fa-user-alt"></i>
+      </a>
+      <i class="fas fa-heart"></i>
+      <i class="fas fa-shopping-bag"></i>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <div class="content">
+    <div class="new-arrivals">
+      <div class="image-container">
+        <i class="fas fa-chevron-left arrow" onclick="prevNewArrival()"></i>
+        <img src="../New Arrivals Women//web-banner_20_rLuyMKi.webp" alt="New Arrivals Banner">
+        <i class="fas fa-chevron-right arrow" onclick="nextNewArrival()"></i>
+        <div class="navigation-dots"></div>
+      </div>
+    </div>2
+
+    <h1><b>CATEGORIES</b></h1>
+    <div class="categories">
+      <img src="../Categories Women//shirts-big-tile_boID7ag.webp" alt="Shirts Category">
+      <img src="../Categories Women//WebsiteTiles_Small_Tushar_women-version_3_yTrv5gk.webp"
+        alt="Women's Clothing Category">
+      <img src="../Categories Women//Women-Small-Tile-1-sneakers_8UE7fF7.webp" alt="Sneakers">
+    </div>
+
+    <h1>OFFICIAL MERCHANDISE</h1>
+    <div class="logos">
+      <div class="logos-container">
+        <a href="TomAndJerry.html"> <img
+            src="../Merchandise Logos/tom-and-jerry-classic-logo-sticker-india-600x800.webp"
+            alt="Tom and Jerry Logo"></a>
+        <a href="Friends.html"> <img src="../Merchandise Logos/Friends-logo.png" alt="Friends Logo"></a>
+        <a href="Wednesday.html"><img src="../Merchandise Logos/download.png" alt="Download Logo"></a>
+      </div>
+      <i class="fas fa-chevron-left arrow-merchandise" onclick="scrollMerchandise(-1)"></i>
+      <i class="fas fa-chevron-right arrow-merchandise" onclick="scrollMerchandise(1)"></i>
+    </div>
+
+    <div class="brand">
+      <a href="#Brand" style="font-size: 35px;">MIX<span style="margin: 0 30px;">MATCH</span> MASH</a>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-links-container">
+      <div class="footer-link">
+        <a href="#">Need Help</a>
+        <ul class="footer-list">
+          <a href="https://www.shiprocket.in/shipment-tracking/">
+            <li>Track Order</li>
+          </a>
+          <li>Contact Us</li>
+          <li>My Account</li>
+
+        </ul>
+      </div>
+
+      <div class="footer-link">
+        <a href="#">Company</a>
+        <ul class="footer-list">
+          <li>About Us</li>
+          <li>Careers</li>
+        </ul>
+      </div>
+
+      <div class="footer-link">
+        <a href="#">More Info</a>
+        <ul class="footer-list">
+          <li>Privacy Policy</li>
+          <li>Terms and Conditions</li>
+        </ul>
+      </div>
+
+      <div class="footer-link">
+        <a href="#">Store Near Me</a>
+        <ul class="footer-list">
+          <li>Vijayawada</li>
+          <li>Hyderabad</li>
+          <li>Guntur</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-additional-links">
+      <img
+        src="https://e7.pngegg.com/pngimages/894/802/png-clipart-computer-icons-symbol-arrow-return-miscellaneous-photography-thumbnail.png"
+        height="1%" width="1%">
+      <a href="#">Easy Return</a><br>
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Indian_Rupee_symbol_in_circle_PD_version.svg/1024px-Indian_Rupee_symbol_in_circle_PD_version.svg.png"
+        height="1%" width="1%">
+      <a href="#">COD Available</a>
+    </div>
+    <div><i class="fas fa-mobile-alt"> <a href="#experience the mash store app"></i>EXPERIENCE THE MASH STORE
+      APP</a><br>
+      <a href="https://www.apple.com/in/app-store/"><img src="../Footer/app-store.avif" height="10%" width="10%"> </a>
+      <a href="https://play.google.com/store/games?hl=en&gl=US"> <img src="../Footer/play-store.avif" height="10%"
+          width="10%"></a>
+    </div>
+    <div>
+      <a href="#follow us">Follow Us:</a>
+      <a href="https://www.facebook.com/"> <img
+          src="https://i.pinimg.com/originals/70/da/29/70da29e0cd3e98f2ba4bb67bd0bde726.png" height="1.5%"
+          width="1.5%"></a>
+      <a href="https://www.instagram.com/"><img
+          src="https://png.pngtree.com/png-clipart/20230401/original/pngtree-three-dimensional-instagram-icon-png-image_9015419.png"
+          height="1.5%" width="1.5%"></a>
+      <a href="https://www.twitter.com"><img src="https://logos-world.net/wp-content/uploads/2020/04/Twitter-Symbol.png"
+          height="2.5%" width="2.5%"></a>
+    </div>
+    <div>
+      <a href="#100%securepayment">100% Secure Payment:</a>
+      <a href="https://www.phonepe.com/"><img
+          src="https://seeklogo.com/images/P/phonepe-logo-B9E7D6F75F-seeklogo.com.png" height="1.5%" width="1.5%"></a>
+      <a href="https://www.googlpay.com"><img src="https://cdn.worldvectorlogo.com/logos/google-pay-1.svg" height="1.5%"
+          width="1.5%"></a>
+      <a href="https://www.paytm.com"><img
+          src="https://cdn.icon-icons.com/icons2/730/PNG/512/paytm_icon-icons.com_62778.png  " height="1.5%"
+          width="1.5%"></a>
+      <img src="https://static-00.iconduck.com/assets.00/mastercard-icon-2048x1225-3kb6axel.png" height="2%" width="2%">
+      <img src="https://cdn-icons-png.flaticon.com/512/217/217425.png" height="1.5%" width="1.5%">
+      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968601.png" height="1.5%" width="1.5%"> |
+      <a href="#shipping partners">Shipping Partners:</a>
+      <a herf="https://www.dtdc.in/tracking.asp"><img src="https://tss-static-images.gumlet.io/icons/dtdc.png"
+          height="3%" width="3%"></a>
+      <img src="https://tss-static-images.gumlet.io/icons/delivery.png" height="3%" width="3%">
+      <img
+        src="https://prod-img.thesouledstore.com/public/theSoul/images/icons/ECOM-Express.png?format=webp&w=70&dpr=2.0"
+        height="3%" width="3%">
+      <img src="https://prod-img.thesouledstore.com/public/theSoul/images/icons/XPRESSBEES.png?format=webp&w=70&dpr=2.0"
+        height="3%" width="3%">
+    </div>
+    <hr>
+    <div>
+      <a href="#mash store"><i class="fa fa-copyright"></i>MASH STORE 2024</a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleSearch() {
+      var searchBox = document.getElementById("search-box");
+      if (searchBox.style.display === "block") {
+        searchBox.style.display = "none";
+      } else {
+        searchBox.style.display = "block";
+      }
+    }
+    window.onscroll = function () { myFunction() };
+
+    var header = document.getElementById("myHeader");
+    var sticky = header.offsetTop;
+
+    function myFunction() {
+      if (window.pageYOffset > sticky) {
+        header.classList.add("sticky-header");
+      } else {
+        header.classList.remove("sticky-header");
+      }
+    }
+
+    var newArrivalsImages = [
+      "../New Arrivals Women/web-banner_20_rLuyMKi.webp",
+      "../New Arrivals Women/6608120240322140941.webp",
+      "../New Arrivals Women/Homepage-Banner_14.webp",
+      "../New Arrivals Women/Homepage-Banner_9_2fZ01l4.webp"
+    ];
+    var newArrivalsIndex = 0;
+
+    function nextNewArrival() {
+      newArrivalsIndex = (newArrivalsIndex + 1) % newArrivalsImages.length;
+      updateNewArrivals();
+    }
+
+    function prevNewArrival() {
+      newArrivalsIndex = (newArrivalsIndex - 1 + newArrivalsImages.length) % newArrivalsImages.length;
+      updateNewArrivals();
+    }
+
+    function updateNewArrivals() {
+      var image = document.querySelector('.new-arrivals img');
+      image.src = newArrivalsImages[newArrivalsIndex];
+      updateDots();
+    }
+
+    // JavaScript
+    window.onload = function () {
+      updateDots(); // Add this line to display dots initially
+    };
+
+    function updateImage() {
+      var image = document.querySelector('.new-arrivals img');
+      image.src = images[currentIndex];
+      updateDots(); // Update navigation dots on image change
+    }
+    function updateDots() {
+      var dotsContainer = document.querySelector('.navigation-dots');
+      dotsContainer.innerHTML = ''; // Clear existing dots
+
+      // Add dots for each image
+      for (var i = 0; i < newArrivalsImages.length; i++) {
+        var dot = document.createElement('span');
+        dot.classList.add('dot');
+        if (i === newArrivalsIndex) {
+          dot.classList.add('active');
+        }
+        dot.setAttribute('data-index', i); // Add data-index attribute to identify the dot
+        dot.addEventListener('click', function () {
+          newArrivalsIndex = parseInt(this.getAttribute('data-index')); // Get the index from data-index attribute
+          updateNewArrivals();
+        });
+        dotsContainer.appendChild(dot);
+      }
+    }
+    var logosContainer = document.querySelector('.logos-container');
+    var scrollDistance = 420; // Adjust as needed
+    var currentIndex = 0;
+    var images = [
+      "../Merchandise Logos/tom-and-jerry-classic-logo-sticker-india-600x800.webp",
+      "../Merchandise Logos/Friends-logo.png",
+      "../Merchandise Logos/download.png",
+      "../Merchandise Logos/artist-tile7_lkVI8t4.webp",
+      "../Merchandise Logos/artist-tile3_qeGQ8nQ.webp",
+      "../Merchandise Logos/artist-tile9_MB5YXeV.webp",
+      "../Merchandise Logos/download (1).jpeg",
+      "../Merchandise Logos/download (2).jpeg",
+      "../Merchandise Logos/download.jpeg",
+      "../Merchandise Logos/download.png",
+    ];
+
+    function scrollMerchandise(direction) {
+      // Update currentIndex based on direction
+      currentIndex = (currentIndex + direction + images.length) % images.length;
+      updateLogos();
+    }
+
+    function updateLogos() {
+      // Clear existing logos
+      logosContainer.innerHTML = '';
+
+      // Add the previous two images
+      for (var i = currentIndex - 1; i <= currentIndex + 1; i++) {
+        var index = (i + images.length) % images.length; // Handle negative index
+        var img = document.createElement('img');
+        img.src = images[index];
+        logosContainer.appendChild(img);
+      }
+
+      // Update currentIndex
+      currentIndex = (currentIndex + images.length) % images.length;
+    }
+
+  </script>
+</body>
+
+</html>

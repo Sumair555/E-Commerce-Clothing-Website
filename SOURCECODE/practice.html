@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MASH STORE</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+/* CSS for styling the navigation bar */
+.navbar {
+  overflow: hidden;
+  background-color: rgba(214, 145, 25, 0.988);
+  width:100%;
+  height: 75px;;
+}
+* {
+  font-family: "Handlee", cursive;
+  font-weight: 1000;
+  font-style: normal;
+}
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 25px 20px;
+  text-decoration: none;
+}
+/* Hover style for Women, Men, and Shoes */
+.navbar a:not(:last-child):hover {
+  background-color: whitesmoke;
+  color: black;
+}
+.navbar a[href="#download_app"]:hover {
+  background-color: whitesmoke;
+  color: black;
+}
+/* Remove background color for hover effect */
+.navbar a[href="#track_order"]:hover,
+.navbar a[href="#contact_us"]:hover,
+.navbar a[href="#download_app"]:hover {
+  background-color: transparent;
+}
+/* Hover effect for Topware and Themes */
+.dropdown:hover > div {
+  background-color: whitesmoke;
+  color: black;
+}
+/* Adjust margin to leave space between Shoes and Track Order */
+.navbar a:nth-child(3) {
+  margin-right: 600px;
+}
+/* Additional styling for the header */
+header {
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+  position: fixed; /* Fixed position to keep it at the top */
+  width: 100%; /* Set the width to 100% */
+  z-index: 1000; /* Ensure it appears above other content */
+}
+.header-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.flex {
+  text-align: left;
+  display: inline-block;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-right: 20px; /* Added space between dropdowns */
+}
+/* Hover effect for Topware and Themes */
+.dropdown:hover {
+  background-color: white;
+  color: rgba(214, 145, 25, 0.988);
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+  background-color: whitesmoke;
+  color:rgba(214, 145, 25, 0.988);
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown a:hover {
+  display: block;
+  background-color:whitesmoke;
+  color: rgba(214, 145, 25, 0.988); 
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.dropdown-content a:hover {
+  background-color:whitesmoke;
+  color: rgba(214, 145, 25, 0.988); 
+}
+/* CSS to remove underline from links */
+a {
+  text-decoration: none;
+  color: black;
+}
+/* CSS for hover effect on icons */
+.fas:hover {
+  color:rgba(214, 145, 25, 0.988);
+}
+.dropdown-topwear {
+  margin-right: 80px;
+}
+.dropdown-themes {
+  margin-right: 150px;
+}
+.membership {
+  margin-right: 550px;
+}
+/* CSS for adding space after MEMBERSHIP */
+.navbar .membership {
+  margin-right: 20px;
+}
+.membership:hover {
+  background-color: white;
+  color: rgba(214, 145, 25, 0.988);
+}
+.fas {
+  margin-left: 10px;
+}
+/* Additional CSS for sticky header */
+.header {
+  padding: 10px;
+  background: white;
+  color: black;
+}
+
+/* Additional CSS for sticky header */
+.sticky-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it appears above other content */
+}
+
+
+/* CSS for search box */
+.search-container {
+  position: relative;
+  display: inline-block;
+}
+
+#search-box {
+  position: absolute;
+  top: calc(50% - 10px); /* Position the text box vertically centered */
+  left: -160px; /* Adjust position to the left of the search icon */
+  width: 150px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  z-index: 1; /* Ensure the text box appears above other content */
+}
+
+#search-box input[type="text"] {
+  width: 100%; /* Make the input box width 100% */
+  border: none; /* Remove default border */
+  outline: none; /* Remove outline */
+}
+
+/* Hide search box by default */
+#search-box {
+  display: none;
+}
+
+/* Display search box on hover */
+.search-container:hover #search-box {
+  display: block;
+}
+
+/* Display search box when input is focused */
+#search-box:focus-within {
+  display: block;
+}
+
+.brand {
+  text-align: center;
+  background-color: rgba(214, 145, 25, 0.988);
+  height: 30px;
+  color:white;
+  padding: 20px 20px;
+}
+footer {
+  background-color: rgb(216, 216, 240);
+  text-align: center;
+}
+.footer-links-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-link {
+  flex:1;
+  margin-right: 10px; /* Adjust as needed */
+}
+.footer-link a {
+  color: rgba(214, 145, 25, 0.988);
+  text-decoration: none;
+  display: inline-block;
+}
+.footer-list {
+  list-style-type: none;
+  padding-left: 20px;
+  margin-top: 0;
+}
+.footer-link h3 {
+  margin: 0;
+}
+.footer-list li {
+  margin-bottom: 5px;
+}
+.footer-list li:last-child {
+  margin-right: 0;
+}
+.footer-list li:hover {
+  color: rgba(214, 145, 25, 0.988);
+}
+.footer-additional-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+.footer-additional-links img, 
+.footer-additional-links span {
+  margin-right: 10px; /* Adjust margin as needed */
+  color: rgba(214, 145, 25, 0.988);
+  text-decoration: none;
+}
+.container {
+  text-align: center;
+  margin-top: 50px;
+  width: 80%; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 100px; /* Add some padding for spacing */
+}
+
+.toggle-buttons {
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  background-color:  rgba(214, 145, 25, 0.988);
+  border:none;
+}
+
+/* Hover effect for signup and login buttons */
+button:hover {
+  background-color: #fff;
+  color: rgba(214, 145, 25, 0.988);
+}
+.forms-container {
+  display: flex;
+  justify-content: center; /* Center the forms horizontally */
+}
+
+#signup-form, #login-form {
+  width: 400px; /* Set a fixed width for the forms */
+  margin: 0 auto; /* Center the forms within the container */
+}
+
+#signup-form h2, #login-form h2 {
+  text-align: center;
+}
+
+table {
+  width: 10%;
+  margin-top: 20px;
+  background-color: white;
+  margin-right: 200px;
+}
+
+table td {
+  padding: 10px;
+}
+
+table input[type="text"],
+table input[type="password"] {
+  width: calc(100% - 20px); /* Adjust width as needed */
+}
+
+table input[type="submit"] {
+  margin-top: 20px;
+}
+
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+</head>
+<body style="background-color: rgb(216, 216, 240);" >
+
+<!-- Navigation bar -->
+<div class="navbar">
+  <a href="#women">WOMEN</a> 
+  <a href="#men">MEN</a>
+  <a href="#shoes">SHOES</a>
+  <a href="#track_order">TRACK ORDER</a>
+  <a href="#contact_us">CONTACT US</a>
+  <a href="#download_app"><i class="fas fa-mobile-alt"></i> DOWNLOAD APP</a>
+</div>
+
+<!-- Header -->
+<header class="header" id="myHeader">
+  <img class="header-image" src="../Logo/Untitled.jpg" alt="Your Image" height="50" width="100">
+  <div class="flex">
+    <div class="dropdown dropdown-topwear">
+      <div><a href="#TOPWEAR">TOPWEAR</a></div>
+      <div class="dropdown-content">
+        <a href="#">Shirts</a>
+        <a href="#">Hoodies</a>
+      </div>
+    </div>
+    <div class="dropdown dropdown-themes">
+      <div><a href="#THEMES">THEMES</a></div>
+      <div class="dropdown-content">
+        <a href="#">Friends</a>
+        <a href="#">Garfield</a>
+        <a href="#">Harry Potter</a>
+        <a href="#">Marvel</a>
+        <a href="#">Mickey Mouse</a>
+        <a href="#">Money Heist</a>
+        <a href="#">Naruto</a>
+        <a href="#">Tom And Jerry</a>
+        <a href="#">Wednesday</a>
+        <a href="#">Winnie The Pooh</a>
+      </div>
+    </div>
+    <a href="#" class="membership">MEMBERSHIP</a>
+    <div class="search-container">
+    <i class="fas fa-search" ></i>
+    <input type="text" placeholder="Search..." id="search-box">
+    </div>
+    <i class="fas fa-user-alt"></i>
+    <i class="fas fa-heart"></i>
+    <i class="fas fa-shopping-bag"></i>
+  </div>
+</header>
+<div class="container">
+  <div class="toggle-buttons">
+    <button onclick="showSignUpForm()">SIGN UP</button>
+    <button onclick="showLoginForm()">LOGIN</button>
+  </div>
+  
+  <div class="forms-container">
+    <table border="2" rules="none">
+      <tr>
+        <td>
+          <div id="signup-form">
+            <h2>Sign Up With The MASH Store</h2>
+            <form id="signup-form" action="signup.php" method="post">
+              <table>
+                <tr>
+                  <td><label for="firstname">First Name:</label></td>
+                  <td><input type="text" id="firstname" name="firstname" placeholder="First Name"></td>
+                </tr>
+                <tr>
+                  <td><label for="lastname">Last Name:</label></td>
+                  <td><input type="lastname" id="lastname" name="lastname" placeholder="Last Name"></td>
+                </tr>
+                <tr>
+                  <td><label for="phoneno">Phone Number:</label></td>
+                  <td><input type="text" id="phoneno" name="phoneno" placeholder="Phone Number"></td>
+                </tr>
+                <tr>
+                  <td><label for="emailid">Email ID:</label></td>
+                  <td><input type="text" id="emailid" name="emailid"  placeholder="Email ID"></td>
+                </tr>
+                <tr>
+                  <td><label for="username">Username:</label></td>
+                  <td><input type="text" id="username" name="username"  placeholder="Username"></td>
+                </tr>
+                <tr>
+                  <td><label for="password">Password:</label></td>
+                  <td><input type="text" id="password" name="password"  placeholder="Password"></td>
+                </tr>
+              </table>
+              <input type="submit" value="Sign Up">
+            </form>
+          </div>
+        </td>
+        <td>
+          <div id="login-form"  style="display:none;">
+            <h2>Login With The MASH Store</h2>
+            <form id="login-form" action="login.php" method="post">
+              <table>
+                <tr>
+                  <td><label for="login-username">Username:</label></td>
+                  <td><input type="text" id="login-username" name="login-username" placeholder="Username"></td> <!-- Fixed the placeholder attribute -->
+                </tr>
+                <tr>
+                  <td><label for="login-password">Password:</label></td>
+                  <td><input type="login-password" id="login-password" name="login-password" placeholder="Password"></td> <!-- Fixed the placeholder attribute -->
+                </tr>
+              </table>
+              <input type="submit" value="Login">
+            </form>
+          </div>          
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="brand">
+  <a href="#Brand" style="font-size: 35px;">MIX<span style="margin: 0 30px;">MATCH</span> MASH</a> 
+</div>
+<footer>
+  <div class="footer-links-container">
+    <div class="footer-link">
+      <a href="#">Need Help</a>
+      <ul class="footer-list">
+        <li>Track Order</li>
+        <li>Contact Us</li>
+        <li>My Account</li>
+  
+      </ul>
+    </div>
+    
+    <div class="footer-link">
+      <a href="#">Company</a>
+      <ul class="footer-list">
+        <li>About Us</li>
+        <li>Careers</li>
+      </ul>
+    </div>
+  
+    <div class="footer-link">
+      <a href="#">More Info</a>
+      <ul class="footer-list">
+        <li>Privacy Policy</li>
+        <li>Terms and Conditions</li>
+      </ul>
+    </div>
+  
+    <div class="footer-link">
+      <a href="#">Store Near Me</a>
+      <ul class="footer-list">
+        <li>Vijayawada</li>
+        <li>Hyderabad</li>
+        <li>Guntur</li>
+      </ul>
+    </div>
+    </div>
+    <div class="footer-additional-links">
+      <img src="https://e7.pngegg.com/pngimages/894/802/png-clipart-computer-icons-symbol-arrow-return-miscellaneous-photography-thumbnail.png"height="1%" width="1%">
+      <a href="#">Easy Return</a><br>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Indian_Rupee_symbol_in_circle_PD_version.svg/1024px-Indian_Rupee_symbol_in_circle_PD_version.svg.png" height="1%" width="1%">
+      <a href="#">COD Available</a>
+    </div>
+    <div><i class="fas fa-mobile-alt"> <a href="#experience the mash store app"></i>EXPERIENCE THE MASH STORE APP</a><br>
+      <img src="../Footer/app-store.avif" height="10%" width="10%"> 
+      <img src="../Footer/play-store.avif" height="10%" width="10%">
+    </div>
+    <div>
+      <a href="#follow us">Follow Us:</a>
+      <img src="https://i.pinimg.com/originals/70/da/29/70da29e0cd3e98f2ba4bb67bd0bde726.png" height="1.5%" width="1.5%">
+      <img src="https://png.pngtree.com/png-clipart/20230401/original/pngtree-three-dimensional-instagram-icon-png-image_9015419.png" height="1.5%" width="1.5%">
+      <img src="https://logos-world.net/wp-content/uploads/2020/04/Twitter-Symbol.png" height="2.5%" width="2.5%">
+    </div>
+    <div>
+      <a href="#100%securepayment">100% Secure Payment:</a>
+      <img src="https://seeklogo.com/images/P/phonepe-logo-B9E7D6F75F-seeklogo.com.png" height="1.5%" width="1.5%">
+      <img src="https://cdn.worldvectorlogo.com/logos/google-pay-1.svg" height="1.5%" width="1.5%">
+      <img src="https://cdn.icon-icons.com/icons2/730/PNG/512/paytm_icon-icons.com_62778.png  " height="1.5%" width="1.5%">
+      <img src="https://static-00.iconduck.com/assets.00/mastercard-icon-2048x1225-3kb6axel.png" height="2%" width="2%">
+      <img src="https://cdn-icons-png.flaticon.com/512/217/217425.png" height="1.5%" width="1.5%">
+      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968601.png" height="1.5%" width="1.5%">   |
+      <a href="#shipping partners">Shipping Partners:</a>
+      <img src="https://tss-static-images.gumlet.io/icons/dtdc.png" height="3%" width="3%">
+      <img src="https://tss-static-images.gumlet.io/icons/delivery.png" height="3%" width="3%">
+      <img src="https://prod-img.thesouledstore.com/public/theSoul/images/icons/ECOM-Express.png?format=webp&w=70&dpr=2.0" height="3%" width="3%">
+      <img src="https://prod-img.thesouledstore.com/public/theSoul/images/icons/XPRESSBEES.png?format=webp&w=70&dpr=2.0" height="3%" width="3%">
+    </div>
+    <hr>
+    <div>
+      <a href="#mash store"><i class="fa fa-copyright"></i>MASH STORE 2024</a>
+    </div>
+  </footer>
+
+<script>
+  window.onscroll = function() {myFunction()};
+
+var header = document.getElementById("myHeader");
+var sticky = header.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky-header");
+  } else {
+    header.classList.remove("sticky-header");
+  }
+}
+function showSignUpForm() {
+  document.getElementById("signup-form").style.display = "block";
+  document.getElementById("login-form").style.display = "none";
+}
+
+function showLoginForm() {
+  document.getElementById("signup-form").style.display = "none";
+  document.getElementById("login-form").style.display = "block";
+}
+userIcon.addEventListener("click", function() {
+    // Toggle the display of signup and login forms
+    if (signupForm.style.display === "none") {
+      signupForm.style.display = "block";
+      loginForm.style.display = "none";
+    } else {
+      signupForm.style.display = "none";
+      loginForm.style.display = "block";
+    }
+  });
+</script>
+</body>
+</html>
